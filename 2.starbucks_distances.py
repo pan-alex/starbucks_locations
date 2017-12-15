@@ -1,7 +1,8 @@
+import numpy as np
 import pandas as pd
 import math
-# import matplotlib.pyplot as plt
-
+import matplotlib.pyplot as plt
+from mpl_toolkits.basemap import Basemap
 
 data_starbucks = pd.read_csv('Starbucks Locations.csv')
 
@@ -38,7 +39,7 @@ class Coordinate(object):
 		alpha = math.sin(d_phi/2)**2 \
 		        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda/2)**2
 		c = 2 * math.atan2(alpha**0.5, (1 - alpha)**0.5)
-		d = 6371 * c    # 6371km = Earth's radius
+		d = 6370.997 * c    # 6370.997km = Earth's radius
 		return d
 
 ###
@@ -55,3 +56,17 @@ data_starbucks['GPS'] = \
                          Coordinate(row['Longitude'], row['Latitude']),
                          axis = 'columns'
                          )
+
+#
+# World Map plots
+#
+
+m = Basemap(projection='merc',llcrnrlat=-60,urcrnrlat=80,\
+            llcrnrlon=-180,urcrnrlon=180,lat_ts=20,resolution='l')
+m.drawcoastlines()
+m.fillcontinents(color='white',lake_color='deepskyblue')
+# draw parallels and meridians.
+m.drawmapboundary(fill_color='deepskyblue')
+# m.bluemarble()    # NASA Background
+plt.title("Mercator Projection")
+

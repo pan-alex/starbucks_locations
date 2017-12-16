@@ -31,7 +31,7 @@ class Coordinate(object):
 		# coordinates. Assumes spherical Earth. Units are in km.
 
 		# Convert degree coordinates to radians
-		deg_to_rad = math.pi / 180
+		deg_to_rad = math.pi / 180    # Degrees to radian conversion factor
 		phi1 = self.lat * deg_to_rad
 		phi2 = other.lat * deg_to_rad
 		d_phi = (self.lat - other.lat) * deg_to_rad
@@ -124,3 +124,6 @@ lon1, lat1 = float(closest['Longitude']), float(closest['Latitude'])
 lon2, lat2 = float(furthest['Longitude']), float(furthest['Latitude'])
 
 m.drawgreatcircle(lon1, lat1, lon2, lat2, alpha = 0.5)
+
+x1, y1 = m(lon1, lat1)
+m.plot(x1, y1,  'o', color='k', markersize='50')

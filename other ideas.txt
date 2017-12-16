@@ -1,0 +1,8 @@
+Other Ideas:
+
+-- Based on location, find nearest stores and provide address + direction (Google Maps)
+-- What point in _____ is furthest from any Starbucks location?
+		- Continental USA
+		- Europe
+
+-- ML project: Can we identify boundaries of large cities based on the location of Starbucks stores?
